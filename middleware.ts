@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const expected = process.env.DECK_ACCESS_TOKEN || "dev-token";
+  const expected = "temporary-private-deck-token";
   const token = request.cookies.get("deck_auth")?.value;
 
   if (token !== expected) {
