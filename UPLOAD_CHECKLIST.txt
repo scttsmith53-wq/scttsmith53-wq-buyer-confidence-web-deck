@@ -1,9 +1,9 @@
-Your GitHub repo should contain these folders/files at the top level:
+You should see these at the top level of the GitHub repo:
 
-app/
-components/
-data/
-public/
+app
+components
+data
+public
 .env.example
 .gitignore
 README.md
@@ -12,7 +12,8 @@ next-env.d.ts
 package.json
 tsconfig.json
 
-Do NOT upload:
-node_modules/
-.next/
-.env.local
+Open the folders and confirm:
+app contains layout.tsx, page.tsx, globals.css, login, api
+components contains Deck.tsx
+data contains slides.ts
+public/assets contains .gitkeep
