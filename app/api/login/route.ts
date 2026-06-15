@@ -2,14 +2,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const username = String(formData.get("username") || "");
-  const password = String(formData.get("password") || "");
+  const username = String(formData.get("username") || "").trim();
+  const password = String(formData.get("password") || "").trim();
 
-  const expectedUsername = process.env.DECK_USERNAME || "scott";
-  const expectedPassword = process.env.DECK_PASSWORD || "ChangeThisBeforeDeploying!";
-  const accessToken = process.env.DECK_ACCESS_TOKEN || "dev-token";
+  // Temporary hard-coded login so we can prove the app works.
+  const expectedUsername = "scott";
+  const expectedPassword = "test12345";
+  const accessToken = "temporary-private-deck-token";
 
-  if (username !== expectedUsername || password !== expectedPassword) {
+  if (username.toLowerCase() !== expectedUsername || password !== expectedPassword) {
     return new NextResponse(null, {
       status: 303,
       headers: {
