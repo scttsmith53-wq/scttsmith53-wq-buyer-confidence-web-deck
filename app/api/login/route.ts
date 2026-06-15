@@ -10,14 +10,25 @@ export async function POST(request: Request) {
   const accessToken = process.env.DECK_ACCESS_TOKEN || "dev-token";
 
   if (username !== expectedUsername || password !== expectedPassword) {
-    return NextResponse.redirect(new URL("/login?error=1", request.url), 302);
+    return new NextResponse(null, {
+      status: 303,
+      headers: {
+        Location: "/login?error=1"
+      }
+    });
   }
 
-  const response = NextResponse.redirect(new URL("/", request.url), 302);
+  const response = new NextResponse(null, {
+    status: 303,
+    headers: {
+      Location: "/"
+    }
+  });
+
   response.cookies.set("deck_auth", accessToken, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
     path: "/",
     maxAge: 60 * 60 * 12
   });
