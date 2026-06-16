@@ -1,37 +1,43 @@
-# Buyer Confidence Webinar Web Deck
+# Buyer Confidence Webinar Web Deck — PPT Exact Version
 
-This is the complete GitHub-ready Next.js app.
+This version displays the actual PowerPoint slides as full-slide images on the website.
 
-## The folders are NOT empty
+It uses the deck with these requested changes already applied:
+- Slide 4, item 01: Know how much cash you need
+- Slide 4, item 04: Know where buyer leverage lies
+- Slide 5: Know How Much Cash You Need
+- Slide 6: Qualify with Less Cash
+- Slide 6 third rectangle: You May Already Qualify
 
-This ZIP contains:
+## Upload / GitHub Desktop
 
-app/layout.tsx
-app/page.tsx
-app/globals.css
-app/login/page.tsx
-app/api/login/route.ts
-app/api/logout/route.ts
-components/Deck.tsx
-data/slides.ts
-public/assets/.gitkeep
+Copy everything in this folder into your GitHub repo folder.
 
-## GitHub Desktop steps
+Your repo should contain:
 
-1. Unzip this file.
-2. Open the unzipped folder.
-3. Copy ALL contents into your GitHub repo folder.
-4. GitHub Desktop should show changed files.
-5. Commit to main.
-6. Push origin.
+app/
+public/
+package.json
+tsconfig.json
+middleware.ts
+next-env.d.ts
+.gitignore
+README.md
 
 Do not upload:
 node_modules
 .next
 .env.local
 
-## AWS Amplify environment variables
+## Amplify
 
-DECK_USERNAME
-DECK_PASSWORD
-DECK_ACCESS_TOKEN
+Use the same build settings:
+
+Frontend build command:
+npm run build
+
+Build output directory:
+.next
+
+Custom login is disabled in middleware.ts.
+Use AWS Amplify's built-in Access Control / password protection.

@@ -1,27 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+// Custom login is intentionally disabled.
+// Use AWS Amplify Access Control / password protection instead.
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/api/login") ||
-    pathname.startsWith("/api/logout") ||
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/assets") ||
-    pathname === "/favicon.ico"
-  ) {
-    return NextResponse.next();
-  }
-
-  const expected = process.env.DECK_ACCESS_TOKEN || "dev-token";
-  const token = request.cookies.get("deck_auth")?.value;
-
-  if (token !== expected) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
   return NextResponse.next();
 }
 

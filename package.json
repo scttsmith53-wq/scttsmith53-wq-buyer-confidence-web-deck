@@ -1,6 +1,6 @@
 {
-  "name": "buyer-confidence-web-deck",
-  "version": "3.0.0",
+  "name": "buyer-confidence-web-deck-ppt-exact",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
