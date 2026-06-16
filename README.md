@@ -1,43 +1,15 @@
-# Buyer Confidence Webinar Web Deck — PPT Exact Version
+# Buyer Confidence Webinar Web Deck — Fixed v3
 
-This version displays the actual PowerPoint slides as full-slide images on the website.
+This version fixes the issue where the previous upload still showed old slide images.
 
-It uses the deck with these requested changes already applied:
-- Slide 4, item 01: Know how much cash you need
-- Slide 4, item 04: Know where buyer leverage lies
-- Slide 5: Know How Much Cash You Need
-- Slide 6: Qualify with Less Cash
-- Slide 6 third rectangle: You May Already Qualify
+Key changes:
+- Uses JPG slide files: public/slides/slide-01.jpg through slide-22.jpg
+- The website code points to .jpg files, not old .png files
+- Slide 1 footer/disclosure is baked into slide-01.jpg
+- Slides 2–21 have old baked footers removed from the images
+- Slide 22 compliance block is baked into slide-22.jpg
+- Slide 4, 5, 6, 8, 14, and 16 are corrected as images
+- CSS now forces the full slide to fit in the viewer instead of cropping
 
-## Upload / GitHub Desktop
-
-Copy everything in this folder into your GitHub repo folder.
-
-Your repo should contain:
-
-app/
-public/
-package.json
-tsconfig.json
-middleware.ts
-next-env.d.ts
-.gitignore
-README.md
-
-Do not upload:
-node_modules
-.next
-.env.local
-
-## Amplify
-
-Use the same build settings:
-
-Frontend build command:
-npm run build
-
-Build output directory:
-.next
-
-Custom login is disabled in middleware.ts.
-Use AWS Amplify's built-in Access Control / password protection.
+IMPORTANT: When uploading this to GitHub, delete the old public/slides folder first.
+If old slide-04.png files remain, they will not be used by this version, but deleting the old folder avoids confusion.

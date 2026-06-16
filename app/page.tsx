@@ -3,11 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Download } from "lucide-react";
 
-const slides = Array.from({ length: 22 }, (_, index) => {
+const TOTAL_SLIDES = 22;
+
+const slides = Array.from({ length: TOTAL_SLIDES }, (_, index) => {
   const num = String(index + 1).padStart(2, "0");
   return {
     number: index + 1,
-    src: `/slides/slide-${num}.png`,
+    src: `/slides/slide-${num}.jpg`,
     alt: `Buyer Confidence Webinar slide ${index + 1}`
   };
 });
@@ -16,7 +18,10 @@ export default function HomePage() {
   const [index, setIndex] = useState(0);
   const slide = slides[index];
 
-  const progressWidth = useMemo(() => `${((index + 1) / slides.length) * 100}%`, [index]);
+  const progressWidth = useMemo(
+    () => `${((index + 1) / slides.length) * 100}%`,
+    [index]
+  );
 
   function next() {
     setIndex((value) => Math.min(value + 1, slides.length - 1));
@@ -40,12 +45,10 @@ export default function HomePage() {
         event.preventDefault();
         next();
       }
-
       if (event.key === "ArrowLeft") {
         event.preventDefault();
         previous();
       }
-
       if (event.key.toLowerCase() === "f") {
         toggleFullscreen();
       }
@@ -64,7 +67,7 @@ export default function HomePage() {
         </div>
 
         <nav>
-          <a href="/downloads/BuyWithConfidence_Webinar_TextEdits_CashLeverage_Final.pptx">
+          <a href="/downloads/BuyWithConfidence_Webinar_Reworded_Aligned_Final_v3.pptx">
             <Download size={16} />
             PPT
           </a>
@@ -81,7 +84,9 @@ export default function HomePage() {
           <ChevronLeft size={34} />
         </button>
 
-        <img src={slide.src} alt={slide.alt} className="slideImage" />
+        <div className="slideCanvas">
+          <img src={slide.src} alt={slide.alt} className="slideImage" />
+        </div>
 
         <button className="sideButton right" onClick={next} aria-label="Next slide">
           <ChevronRight size={34} />
@@ -95,7 +100,9 @@ export default function HomePage() {
         </button>
 
         <div className="progressWrap">
-          <div className="progressText">Use arrow keys or spacebar to move through the deck.</div>
+          <div className="progressText">
+            Use arrow keys or spacebar to move through the deck.
+          </div>
           <div className="progressTrack">
             <div className="progressFill" style={{ width: progressWidth }} />
           </div>

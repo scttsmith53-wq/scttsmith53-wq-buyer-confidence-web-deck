@@ -1,15 +1,10 @@
 Before committing, confirm:
 
-app/layout.tsx exists
-app/page.tsx exists
-app/globals.css exists
-public/slides/slide-01.png through slide-22.png exist
-public/downloads/BuyWithConfidence_Webinar_TextEdits_CashLeverage_Final.pptx exists
-package.json exists
-tsconfig.json exists
-middleware.ts exists
-next-env.d.ts exists
+public/slides/slide-01.jpg through slide-22.jpg exist
+app/page.tsx points to .jpg files
+app/globals.css is updated
+No node_modules folder
+No .next folder
 
-Then GitHub Desktop:
-Commit message: Replace website with exact PPT deck
-Push origin
+Commit message:
+Replace with fixed efficient web deck v3

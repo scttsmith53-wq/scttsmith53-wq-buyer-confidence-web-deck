@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Buyer Confidence Webinar Deck",
-  description: "Slide-by-slide web deck for the Buyer Confidence Webinar."
+  description: "Private web deck for the Buyer Confidence Webinar."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
