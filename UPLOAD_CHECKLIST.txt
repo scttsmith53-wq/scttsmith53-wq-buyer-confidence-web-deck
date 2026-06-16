@@ -1,0 +1,15 @@
+Before committing, confirm:
+
+app/layout.tsx exists
+app/page.tsx exists
+app/globals.css exists
+public/slides/slide-01.png through slide-22.png exist
+public/downloads/BuyWithConfidence_Webinar_TextEdits_CashLeverage_Final.pptx exists
+package.json exists
+tsconfig.json exists
+middleware.ts exists
+next-env.d.ts exists
+
+Then GitHub Desktop:
+Commit message: Replace website with exact PPT deck
+Push origin

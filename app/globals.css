@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(43, 89, 137, 0.45), transparent 32%),
+    linear-gradient(135deg, #020813, #061426 60%, #01050c);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.deckPage {
+  width: 100vw;
+  height: 100vh;
+  padding: 18px 24px 22px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+
+.topBar,
+.bottomControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topBar {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.topBar strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  color: #f0c75e;
+}
+
+.topBar span {
+  display: block;
+  margin-top: 3px;
+  font-size: 14px;
+  opacity: 0.72;
+}
+
+.topBar nav {
+  display: flex;
+  gap: 10px;
+}
+
+.topBar button,
+.topBar a,
+.bottomControls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(214, 167, 58, 0.55);
+  border-radius: 999px;
+  background: rgba(3, 10, 20, 0.74);
+  color: #fff;
+  text-decoration: none;
+  padding: 11px 15px;
+  cursor: pointer;
+}
+
+.slideStage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.slideImage {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
+  background: #061426;
+}
+
+.sideButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(214, 167, 58, 0.55);
+  border-radius: 50%;
+  background: rgba(3, 10, 20, 0.65);
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.sideButton.left {
+  left: 14px;
+}
+
+.sideButton.right {
+  right: 14px;
+}
+
+.progressWrap {
+  flex: 1;
+  max-width: 700px;
+}
+
+.progressText {
+  text-align: center;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.progressTrack {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d6a73a, #f0c75e);
+  transition: width 180ms ease;
+}
+
+@media (max-width: 850px) {
+  body {
+    overflow: auto;
+  }
+
+  .deckPage {
+    height: auto;
+    min-height: 100vh;
+    padding: 12px;
+  }
+
+  .topBar,
+  .bottomControls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .topBar nav {
+    width: 100%;
+  }
+
+  .topBar button,
+  .topBar a,
+  .bottomControls button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slideImage {
+    border-radius: 10px;
+  }
+
+  .sideButton {
+    display: none;
+  }
+}
