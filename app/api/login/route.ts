@@ -2,22 +2,34 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const username = String(formData.get("username") || "");
-  const password = String(formData.get("password") || "");
+  const username = String(formData.get("username") || "").trim();
+  const password = String(formData.get("password") || "").trim();
 
-  const expectedUsername = process.env.DECK_USERNAME || "scott";
-  const expectedPassword = process.env.DECK_PASSWORD || "ChangeThisBeforeDeploying!";
-  const accessToken = process.env.DECK_ACCESS_TOKEN || "dev-token";
+  // Temporary hard-coded login so we can prove the app works.
+  const expectedUsername = "scott";
+  const expectedPassword = "test12345";
+  const accessToken = "temporary-private-deck-token";
 
-  if (username !== expectedUsername || password !== expectedPassword) {
-    return NextResponse.redirect(new URL("/login?error=1", request.url), 302);
+  if (username.toLowerCase() !== expectedUsername || password !== expectedPassword) {
+    return new NextResponse(null, {
+      status: 303,
+      headers: {
+        Location: "/login?error=1"
+      }
+    });
   }
 
-  const response = NextResponse.redirect(new URL("/", request.url), 302);
+  const response = new NextResponse(null, {
+    status: 303,
+    headers: {
+      Location: "/"
+    }
+  });
+
   response.cookies.set("deck_auth", accessToken, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
     path: "/",
     maxAge: 60 * 60 * 12
   });
