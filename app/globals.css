@@ -92,6 +92,11 @@ a {
   overflow: hidden;
 }
 
+.firstSlideCanvas {
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-content: center;
+}
+
 .slideImage {
   display: block;
   max-width: 100%;
@@ -103,6 +108,10 @@ a {
   border-radius: 18px;
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
   background: #061426;
+}
+
+.firstSlideCanvas .slideImage {
+  max-height: calc(100% - 82px);
 }
 
 .sideButton {
@@ -129,16 +138,13 @@ a {
   right: 14px;
 }
 
-/* Guaranteed first-slide disclosure. This sits on top of slide 1 only. */
+/* Slide 1 footer lives below the slide image, not on top of it. */
 .firstSlideFooterOverlay {
-  position: absolute;
+  position: relative;
   z-index: 8;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
   width: min(100%, calc((100vh - 96px) * 16 / 9));
   max-width: 100%;
-  padding: 11px 22px 13px;
+  padding: 10px 22px 12px;
   background: rgba(3, 10, 20, 0.96);
   border-top: 1px solid rgba(240, 199, 94, 0.6);
   border-bottom-left-radius: 18px;
@@ -160,7 +166,6 @@ a {
   color: rgba(255, 255, 255, 0.86);
 }
 
-/* Guaranteed final-slide compliance. This sits on top of slide 22 only. */
 .lastSlideComplianceOverlay {
   position: absolute;
   z-index: 8;
@@ -231,6 +236,10 @@ a {
 
   .slideCanvas {
     height: auto;
+  }
+
+  .firstSlideCanvas .slideImage {
+    max-height: none;
   }
 
   .slideImage {

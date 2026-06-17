@@ -84,7 +84,7 @@ export default function HomePage() {
           <ChevronLeft size={34} />
         </button>
 
-        <div className="slideCanvas">
+        <div className={`slideCanvas ${isFirstSlide ? "firstSlideCanvas" : ""}`}>
           <img src={slide.src} alt={slide.alt} className="slideImage" />
 
           {isFirstSlide && (
