@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Download } from "lucide-react";
 
 const TOTAL_SLIDES = 22;
@@ -18,10 +18,8 @@ export default function HomePage() {
   const [index, setIndex] = useState(0);
   const slide = slides[index];
 
-  const progressWidth = useMemo(
-    () => `${((index + 1) / slides.length) * 100}%`,
-    [index]
-  );
+  const isFirstSlide = slide.number === 1;
+  const isLastSlide = slide.number === TOTAL_SLIDES;
 
   function next() {
     setIndex((value) => Math.min(value + 1, slides.length - 1));
@@ -45,10 +43,12 @@ export default function HomePage() {
         event.preventDefault();
         next();
       }
+
       if (event.key === "ArrowLeft") {
         event.preventDefault();
         previous();
       }
+
       if (event.key.toLowerCase() === "f") {
         toggleFullscreen();
       }
@@ -86,33 +86,35 @@ export default function HomePage() {
 
         <div className="slideCanvas">
           <img src={slide.src} alt={slide.alt} className="slideImage" />
+
+          {isFirstSlide && (
+            <div className="firstSlideFooterOverlay">
+              <div className="footerMainLine">
+                Scott Smith • NMLS #2244351 • Citywide Home Loans NMLS #2611 • HomeSmart Realty • Equal Housing Lender
+              </div>
+              <div className="footerDisclosureLine">
+                This presentation is for educational purposes only and is not a loan application, approval, pre-approval, or commitment to lend. All loans are subject to credit approval, property review, underwriting, and program eligibility.
+              </div>
+            </div>
+          )}
+
+          {isLastSlide && (
+            <div className="lastSlideComplianceOverlay">
+              <div className="complianceTitle">Important Disclosure</div>
+              <div className="complianceBody">
+                This presentation is provided for educational purposes only and should not be considered a loan application, approval, pre-approval, or commitment to lend. Loan terms, program availability, and eligibility are subject to change without notice. All loans are subject to credit approval, income and asset verification, property review, underwriting requirements, and program guidelines. Down payment assistance and other specialty programs may have additional qualifications and are not available to all borrowers. Equal Housing Lender.
+              </div>
+              <div className="complianceSignature">
+                Scott Smith • NMLS #2244351&nbsp;&nbsp;&nbsp; Citywide Home Loans • NMLS #2611&nbsp;&nbsp;&nbsp; HomeSmart Realty
+              </div>
+            </div>
+          )}
         </div>
 
         <button className="sideButton right" onClick={next} aria-label="Next slide">
           <ChevronRight size={34} />
         </button>
       </section>
-
-      <div className="bottomControls">
-        <button onClick={previous}>
-          <ChevronLeft size={20} />
-          Previous
-        </button>
-
-        <div className="progressWrap">
-          <div className="progressText">
-            Use arrow keys or spacebar to move through the deck.
-          </div>
-          <div className="progressTrack">
-            <div className="progressFill" style={{ width: progressWidth }} />
-          </div>
-        </div>
-
-        <button onClick={next}>
-          Next
-          <ChevronRight size={20} />
-        </button>
-      </div>
     </main>
   );
 }

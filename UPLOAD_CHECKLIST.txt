@@ -1,10 +1,7 @@
-Before committing, confirm:
-
-public/slides/slide-01.jpg through slide-22.jpg exist
-app/page.tsx points to .jpg files
-app/globals.css is updated
-No node_modules folder
-No .next folder
-
-Commit message:
-Replace with fixed efficient web deck v3
+Before committing:
+1. Delete the old public/slides folder from the repo.
+2. Copy this full project into the repo.
+3. Confirm public/slides has slide-01.jpg through slide-22.jpg.
+4. Confirm app/page.tsx has no bottomControls section.
+5. Commit: Replace with fixed efficient web deck v4
+6. Push origin.
